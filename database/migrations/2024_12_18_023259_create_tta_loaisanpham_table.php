@@ -12,13 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tta_loaisanpham', function (Blueprint $table) {
-            // $table->id();
-            // $table->timestamps();
-            $table->id();
-            $table->string('ttaMaloai',255)->unique();
-            $table->string('ttaTenLoai',255);
-            $table->tinyInteger('ttaTrangThai');
-            $table->timestamps();
+            $table->id(); // Tạo cột id tự tăng
+            $table->string('ttaMaloai')->unique(); // Cột mã loại sản phẩm
+            $table->string('ttaTenLoai'); // Cột tên loại sản phẩm
+            $table->boolean('ttaTrangThai'); // Cột trạng thái
+            $table->timestamps(); // Cột tạo mới và cập nhật
         });
     }
 

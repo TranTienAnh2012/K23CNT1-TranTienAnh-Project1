@@ -17,5 +17,6 @@ class ttaSanPham extends Seeder
             'ttaTenLoai'=>'Cây Văn phong',
             'ttaTrangThai' => 0
         ]);
+       
     }
 }

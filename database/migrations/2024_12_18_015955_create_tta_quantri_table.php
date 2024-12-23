@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tta_quantri', function (Blueprint $table) {
-            // $table->id();
-            // $table->timestamps();
             $table->id();
             $table->string('ttaTaiKhoan', 255)->unique();
             $table->string('ttaMatKhau',255);
             $table->tinyInteger('ttaTrangThai');
             $table->timestamps();
+        
+           
         });
     }
 
