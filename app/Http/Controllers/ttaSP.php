@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ttaSP extends Controller
 {
-    //
+    //list
     public function ttalist(){
         $ttaloaisanpham = TTA_loai_san_pham::all();
         return view('TTaAdmins.ttaLoaiSanPham.tta-list',['ttaloaisanpham'=> $ttaloaisanpham]);

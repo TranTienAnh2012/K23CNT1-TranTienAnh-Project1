@@ -13,10 +13,15 @@
     <nav class="navbar navbar-light bg-light justify-content-between px-3">
         <span><i class="fa-solid fa-bars"></i> <input type="text"  placeholder="  Search" style="border-radius: 10px" style="border-color: brown"></span>
         
-        <div>     
-            <a href="{{route('home')}}" class="btn btn-success" >Home</a>
-            <a href="{{route('admin-tta.loginsubmit')}}" class="btn btn-danger">Đăng xuất</a>
-            <span class="badge bg-danger me-2" ><i class="fa-solid fa-comments" ></i>3</span>
+        <div>
+            <div href="#" class="ttachaomung" style="font-weight: bold">
+                Chào mừng:<span style="color: red">
+                    {{ session('ttaTaiKhoan') ?? 'Admind' }}
+                </span>
+            </div>     
+            <a href="{{route('home')}}" class="btn btn-success" style="font-weight: bold" >Home</a>
+            <a href="{{route('admin-tta.loginsubmit')}}" class="btn btn-danger" style="font-weight: bold">Đăng xuất</a>
+            <span class="badge bg-info me-2" ><i class="fa-solid fa-comments" style="font-weight: bold"></i>3</span>
             <span class="badge bg-warning text-dark"><i class="fa-solid fa-bell"></i>15</span>
        
         </div>

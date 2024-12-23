@@ -15,21 +15,26 @@
 
                     <div class="card-body container-fruid">
                         <div class="mb-3 row">
-                            <label for="ttaMaloai  " class="col-sm-2 col-form-label">Ma Loai</label>
+                            <label for="ttaMaloai  " class="col-sm-2 col-form-label" style="font-weight: bold">Mã Loại:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="ttaMaloai" name="ttaMaloai">
-
+                                <input type="text" class="form-control" id="ttaMaloai" name="ttaMaloai" value="{{old('ttaMaloai')}}">
+                                @error('ttaMaloai')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                             </div>
                           </div>
                         <div class="mb-3 row">
-                            <label for="ttaTenLoai " class="col-sm-2 col-form-label">Ten Loai</label>
+                            <label for="ttaTenLoai " class="col-sm-2 col-form-label" style="font-weight: bold">Tên Loại:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="ttaTenLoai" name="ttaTenLoai">
+                                <input type="text" class="form-control" id="ttaTenLoai" name="ttaTenLoai" value="{{old('ttaTenLoai')}}">
+                                @error('ttaTenLoai')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                             </div>
                           </div>
 
                           <div class="mb-3 row">
-                            <label for="ttaTrangThai" class="col-sm-2 col-form-label">Trạng Thái</label>
+                            <label for="ttaTrangThai" class="col-sm-2 col-form-label" style="font-weight: bold">Trạng Thái:</label>
                             <div class="col-sm-10">
 
                                 <div class="form-check form-check-inline">
@@ -55,6 +60,9 @@
                                     <label for="ttaTrangThai0" class="form-check-label">Khóa</label>
                                 </div>
                             </div>
+                            @error('ttaTrangThai')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         
                     </div>

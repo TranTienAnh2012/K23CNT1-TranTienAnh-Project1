@@ -28,6 +28,8 @@ class TTa_QuanTri_controller extends Controller
         if ($user->ttaMatKhau !== $password) {
             return back()->withErrors(['ttaMatKhau' => 'Mật khẩu không đúng.']);
         }
+        // Lưu thông tin tài khoản vào session
+            session(['ttaTaiKhoan' => $user->ttaTaiKhoan]);
         // Đăng nhập thành công, chuyển hướng
         return redirect('/home');
     }

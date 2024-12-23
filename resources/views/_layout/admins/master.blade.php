@@ -7,15 +7,25 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
+         body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
         .sideBar{
-            width: 250px;
-            height: 790px;
+           
+            width: 265px;
+            height: 830px;
             background: rgb(113, 112, 141);
+
         }
         .Wrapper{
+            flex-grow: 1; /* Phần này chiếm toàn bộ khoảng trống còn lại */
             width: calc(100% - 250px );
-            height: 790px;
+            height: 830px;
             background: #fff;
+            
         }
     </style>
 </head>

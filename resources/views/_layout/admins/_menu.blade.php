@@ -48,8 +48,11 @@
   <li class="list-group-item">
     <a href="/ttaAdmins/tta-loai-san-pham">Dạnh Sách Loại Sản Phẩm</a>
   </li>
+  <li class="list-group-item">
+    <a href="/ttaAdminsp/tta-san-pham">Dạnh Sách Sản Phẩm</a>
+  </li>
   
   <!-- Các mục khác -->
   <li class="list-group-item"><a href="">Danh Sách Người Dùng</a></li>
-  <li class="list-group-item"><a href="">And a fifth one</a></li>
+  <li class="list-group-item"><a href="">Khách Hàng</a></li>
 </ul>

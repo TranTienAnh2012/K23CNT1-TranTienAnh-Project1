@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\TTa_QuanTri_controller;
 use App\Http\Controllers\ttaSP;
+use App\Http\Controllers\TTa_SanPham_Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,3 +54,9 @@ Route::get('/ttaAdmins/tta-loai-san-pham/tta-createQT',[TTa_QuanTri_controller::
 Route::post('/ttaAdmins/tta-loai-san-pham/tta-createQT',[TTa_QuanTri_controller::class,'ttacreatQTsubmit'])->name('admin-tta.createsubmitQT');
 #chi tiết
 Route::get('/ttaAdmins/tta-loai-san-pham/tta-chitietQTQT/{id}',[TTa_QuanTri_controller::class,'ttachitietqt'])->name('admin-tta.chitietqt');
+#List sản phẩm
+Route::get('/ttaAdminsp/tta-san-pham', [TTa_SanPham_Controller::class, 'ttalistSP'])->name('ttalist.sanpham');
+#thêm mới sản phẩm
+Route::get('/ttaAdminsp/tta-san-pham/tta-createsp',[TTa_SanPham_Controller::class,'ttacreatsp'])->name('tta.createsp');
+#insert submit
+Route::post('/ttaAdminsp/tta-san-pham/tta-createsp',[TTa_SanPham_Controller::class,'ttacreatspsubmit'])->name('tta.createspsubmit');
