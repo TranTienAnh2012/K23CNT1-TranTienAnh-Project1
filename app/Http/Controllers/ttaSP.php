@@ -10,7 +10,7 @@ class ttaSP extends Controller
 {
     //list
     public function ttalist(){
-        $ttaloaisanpham = TTA_loai_san_pham::all();
+        $ttaloaisanpham = TTA_loai_san_pham::paginate(5);
         return view('TTaAdmins.ttaLoaiSanPham.tta-list',['ttaloaisanpham'=> $ttaloaisanpham]);
     }
     //them mowi
@@ -48,37 +48,39 @@ class ttaSP extends Controller
             return view('TTaAdmins.ttaLoaiSanPham.tta-chitiet', ['ttaloaisanpham' => $ttaloaisanpham]);
         }
         
-    #edit
-    public function ttaedit($id){
-        $ttaloaisanpham = TTA_loai_san_pham::find($id);
-        
-        // Kiểm tra xem có tìm thấy dữ liệu không
-        if (!$ttaloaisanpham) {
-            return redirect('/ttaAdmins/tta-loai-san-pham')->with('error', 'Loại sản phẩm không tồn tại');
+        #edit
+        public function ttaedit($id){
+            $ttaloaisanpham = TTA_loai_san_pham::find($id);
+            
+            // Kiểm tra xem có tìm thấy dữ liệu không
+            if (!$ttaloaisanpham) {
+                return redirect('/ttaAdmins/tta-loai-san-pham')->with('error', 'Loại sản phẩm không tồn tại');
+            }
+            
+            return view('TTaAdmins.ttaLoaiSanPham.tta-edit', ['ttaloaisanpham' => $ttaloaisanpham]);
         }
-        
-        return view('TTaAdmins.ttaLoaiSanPham.tta-edit', ['ttaloaisanpham' => $ttaloaisanpham]);
-    }
 
 
-    # edit submit 
-    public function ttaeditsubmit(Request $request)
-    {
-        $ttaMaloai  = $request->ttaMaloai ;
-        $ttaloaisanpham = TTA_loai_san_pham::where('ttaMaloai',$ttaMaloai)->first();
-        $ttaloaisanpham->ttaMaloai=$request->ttaMaloai;
-        $ttaloaisanpham->ttaTenLoai=$request->ttaTenLoai;
-        $ttaloaisanpham->ttaTrangThai=$request->ttaTrangThai;
-        // ...
-        $ttaloaisanpham->save(); // Ghi lại
-        return redirect('/ttaAdmins/tta-loai-san-pham');
-    }
+        # edit submit 
+        public function ttaeditsubmit(Request $request)
+        {
+            $ttaMaloai  = $request->ttaMaloai ;
+            $ttaloaisanpham = TTA_loai_san_pham::where('ttaMaloai',$ttaMaloai)->first();
+            $ttaloaisanpham->ttaMaloai=$request->ttaMaloai;
+            $ttaloaisanpham->ttaTenLoai=$request->ttaTenLoai;
+            $ttaloaisanpham->ttaTrangThai=$request->ttaTrangThai;
+            // ...
+            $ttaloaisanpham->save(); // Ghi lại
+            return redirect('/ttaAdmins/tta-loai-san-pham');
+        }
     #delete
         public function ttadelete($id)
         {
             TTA_loai_san_pham::where('ttaMaloai',$id)->delete();
             return redirect('/ttaAdmins/tta-loai-san-pham');
         }
+
+      
     #Trang chủ tạm thời
     public function ttatrangchu(){
         // Lấy tất cả loại sản phẩm từ bảng

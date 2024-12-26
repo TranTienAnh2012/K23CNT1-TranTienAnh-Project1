@@ -2,6 +2,14 @@
 @section('title','Danh Sach Loai San Pham')
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .nut{
+            text-align: center;
+        }
+        .nut a{
+            margin-left: 11px;
+        }
+    </style>
 </head>
 @section('content-body')
     <div class="container">
@@ -29,7 +37,7 @@
                             <td>{{ $item->ttaMaloai }}</td>
                             <td>{{ $item->ttaTenLoai }}</td>
                             <td>{{ $item->ttaTrangThai }}</td>
-                            <td> 
+                            <td class="nut"> 
                                 <a href="{{ route('admin-tta.chitiet', ['id' => $item->id]) }}" class="btn btn-primary" style="font-weight: bold">Chi Tiết <i class="fa-solid fa-circle-info"></i></a>
                                 <a href="{{ route('admin-tta.edit', ['id' => $item->id]) }}" class="btn btn-warning" style="font-weight: bold">Sửa<i class="fa-solid fa-arrow-up-from-bracket"></i></a>
                                 <a href="{{ route('admin-tta.delete', ['id' => $item->ttaMaloai]) }}" 
@@ -44,6 +52,10 @@
                     @endforelse
                 </tbody>
             </table>
+             <!-- Liên kết phân trang -->
+             <div class="d-flex justify-content-center">
+                {{ $ttaloaisanpham->links() }}
+            </div>
         </div>
     </div>
 @endsection

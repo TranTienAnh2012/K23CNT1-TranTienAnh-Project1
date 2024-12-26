@@ -33,11 +33,10 @@
                             <td>{{ $item->ttaTrangThai }}</td>
                             <td > 
                                 <a href="{{ route('admin-tta.chitietqt', ['id' => $item->id]) }}" class="btn btn-primary" style="font-weight: bold">Chi Tiết <i class="fa-solid fa-circle-info"></i></a>
-                                {{-- <a href="{{ route('admin-tta.chitiet', ['id' => $item->id]) }}" class="btn btn-primary">chi tiết <i class="fa-solid fa-circle-info"></i></a>
-                                <a href="{{ route('admin-tta.edit', ['id' => $item->id]) }}" class="btn btn-primary">Sửa<i class="fa-solid fa-arrow-up-from-bracket"></i></a>
-                                <a href="{{ route('admin-tta.delete', ['id' => $item->ttaMaloai]) }}" 
+                                <a href="" class="btn btn-primary">Sửa<i class="fa-solid fa-arrow-up-from-bracket"></i></a>
+                                <a href="" 
                                     class="btn btn-danger"
-                                    onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa  <i class="fa-solid fa-trash"></i></a> --}}
+                                    onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa  <i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                     @empty
