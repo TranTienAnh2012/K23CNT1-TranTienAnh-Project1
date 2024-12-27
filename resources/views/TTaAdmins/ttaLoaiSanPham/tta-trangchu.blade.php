@@ -6,11 +6,12 @@
         .container{
             display: flex;
         }
+      
     </style>
 </head>
 @section('content-body')
             <div class="row">
-                <h1>Trang Chủ</h1>
+                <h1>Database</h1>
             </div>
     <div class="container">
         <div class="col-md-3" style="padding-left: 20px">
@@ -49,5 +50,65 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-3" style="padding-left: 20px" >
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-success">Tổng Số Sản Phẩm</h5>
+                    
+                @if($ttasanpham)
+                    <p class="card-text">Số lượng Sản phẩm: {{ $ttasanpham->count() }}</p>
+                @else
+                    <p class="card-text">Không có sản phẩm trong hệ thống.</p>
+                @endif
+                
+                </div>
+                
+                <div class="card-footer">
+                    <a href="{{ route('ttalist.sanpham') }}" class="btn btn-success">Quản Lý Sản Phẩm</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3" style="padding-left: 20px" >
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-success">Tổng Số Khách Hàng</h5>
+                    
+                @if($ttakhachhang)
+                    <p class="card-text">Số lượng khách hàng: {{ $ttakhachhang->count() }}</p>
+                @else
+                    <p class="card-text">Không có khách hàng trong hệ thống.</p>
+                @endif
+                
+                </div>
+                
+                <div class="card-footer">
+                    <a href="{{ route('tta.listkhachhang') }}" class="btn btn-success">Quản Lý Khách Hàng</a>
+                </div>
+            </div>
+        </div>
     </div>
+        <br>
+            <div class="container2">
+                <div  class="col-md-3" style="padding-left: 20px" >
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">Tổng Số Hóa Đơn</h5>
+                            
+                        @if($ttaHoaDon)
+                            <p class="card-text">Số lượng Hóa Đơn: {{ $ttaHoaDon->count() }}</p>
+                        @else
+                            <p class="card-text">Không có Hóa Đơn trong hệ thống.</p>
+                        @endif
+                        
+                        </div>
+                        
+                        <div class="card-footer">
+                            <a href="{{ route('tta.listHD') }}" class="btn btn-success">Quản Lý Hóa Đơn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
 @endsection

@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\File; // Xử lý file
 class TTa_SanPham_Controller extends Controller
 {
     // List sản phẩm
-    public function ttalistSP()
+    public function ttalistSP(Request $request)
     {
+        $search = $request->input('search', null); // Lấy giá trị tìm kiếm hoặc null
         $ttasanpham = TTa_SanPham_Model::paginate(3);
-        return view('TTaAdminsp.ttaSanPham.tta-list', ['ttasanpham' => $ttasanpham]);
+        return view('TTaAdminsp.ttaSanPham.tta-list', ['ttasanpham' => $ttasanpham , 'search' => $search]);
     }
 
     // Form thêm mới sản phẩm
@@ -159,5 +160,23 @@ class TTa_SanPham_Controller extends Controller
         $ttasanpham = TTa_SanPham_Model::findOrFail($id);
         $ttasanpham->delete();
         return redirect()->route('ttalist.sanpham')->with('message', 'Loại sản phẩm đã được xoá thành công!');
-    }  
+    }
+    public function search(Request $request)
+    {
+        // Lấy từ khóa tìm kiếm từ người dùng
+        $search = $request->input('search', null);
+    
+        // Truy vấn dữ liệu từ bảng
+        $ttasanpham = TTa_SanPham_Model::when($search, function ($query, $search) {
+            return $query->where('ttaMaSanPham', 'LIKE', "%$search%")
+                         ->orWhere('ttaTenSanPham', 'LIKE', "%$search%");
+        })->paginate(3); // Sử dụng paginate thay vì get()
+    
+        // Trả về view
+        return view('TTaAdminsp.ttaSanPham.tta-list', [
+            'ttasanpham' => $ttasanpham,
+            'search' => $search
+        ]);
+    }
+    
 }

@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
         $this ->call([
             ttaquantri::class,
             ttaSanPham::class,
-            ttaSanPhams::class
+            ttaSanPhams::class,
+            HoaDonSeeder::class
         ]);
     }
 }

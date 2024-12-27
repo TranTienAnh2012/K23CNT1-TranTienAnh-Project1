@@ -3,11 +3,14 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .nut{
+      .nut{
+            display: flex;
             text-align: center;
         }
         .nut a{
-            margin-left: 5px;
+            
+            margin-left: 10px;
+
         }
     </style>
 </head>
@@ -16,7 +19,7 @@
         <div class="row ">
             <div class="col-12" >
                 <h1>Danh Sách Khách Hàng</h1> 
-                <a href="{{route('tta.createKH.createsubmit')}}" class="btn btn-success" style="margin-left: 77%;">Thêm Mới Loại Sản Phẩm </a>
+                <a href="{{route('tta.createKH.createsubmit')}}" class="btn btn-success" style="margin-left: 77%;"><i class="fa-solid fa-arrow-right"></i>Thêm Mới Loại Sản Phẩm </a>
             </div>
         </div>
         <div class="row">

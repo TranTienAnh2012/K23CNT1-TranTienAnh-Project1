@@ -13,15 +13,19 @@ return new class extends Migration
     {
         Schema::create('tta__hoa_don', function (Blueprint $table) {
             $table->id();
-            $table->string('ttaMaHoaDon',255)->unique();
-            $table->bigInteger('ttaMakhachhang')->references('id')->on('tta__khach__hang');
-            $table->date('ttaNgayHoaDon');
-            $table->string('ttaHotenKhachHang',255);
-            $table->string('ttaEmail',255);
-            $table->string('ttaDienThoai',255);
-            $table->string('ttaDiaChi',255);
-            $table->float('ttaTongGiaTri');
-            $table->tinyInteger('ttaTrangThai');
+            $table->string('ttaMaHoaDon', 255)->unique(); // Mã hóa đơn
+            $table->unsignedBigInteger('ttaMakhachhang'); // Mã khách hàng
+            $table->foreign('ttaMakhachhang')            // Thiết lập khóa ngoại
+                ->references('id')                     // Tham chiếu tới cột `id`
+                ->on('tta__khach__hang')               // Thuộc bảng `tta__khach__hang`
+                ->onDelete('cascade');                 // Tự động xóa bản ghi liên quan khi xóa khách hàng
+            $table->date('ttaNgayHoaDon');               // Ngày hóa đơn
+            $table->string('ttaHotenKhachHang', 255);    // Họ tên khách hàng
+            $table->string('ttaEmail', 255);             // Email khách hàng
+            $table->string('ttaDienThoai', 255);         // Số điện thoại
+            $table->string('ttaDiaChi', 255);            // Địa chỉ
+            $table->float('ttaTongGiaTri');              // Tổng giá trị hóa đơn
+            $table->tinyInteger('ttaTrangThai');         // Trạng thái hóa đơn
             $table->timestamps();
         });
     }

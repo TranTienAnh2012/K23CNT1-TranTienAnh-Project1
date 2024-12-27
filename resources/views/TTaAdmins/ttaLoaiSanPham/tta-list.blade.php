@@ -16,7 +16,7 @@
         <div class="row ">
             <div class="col-12" >
                 <h1>Danh Sách Loại Sản Phẩm</h1> 
-                <a href="{{route('admin-tta.createsubmit')}}" class="btn btn-success" style="margin-left: 77%;">Thêm Mới Loại Sản Phẩm </a>
+                <a href="{{route('admin-tta.createsubmit')}}" class="btn btn-success" style="margin-left: 77%;"><i class="fa-solid fa-arrow-right"></i>Thêm Mới Loại Sản Phẩm </a>
             </div>
         </div>
         <div class="row">
@@ -39,7 +39,7 @@
                             <td>{{ $item->ttaTrangThai }}</td>
                             <td class="nut"> 
                                 <a href="{{ route('admin-tta.chitiet', ['id' => $item->id]) }}" class="btn btn-primary" style="font-weight: bold">Chi Tiết <i class="fa-solid fa-circle-info"></i></a>
-                                <a href="{{ route('admin-tta.edit', ['id' => $item->id]) }}" class="btn btn-warning" style="font-weight: bold">Sửa<i class="fa-solid fa-arrow-up-from-bracket"></i></a>
+                                <a href="{{ route('admin-tta.editsubmit', ['id' => $item->id]) }}" class="btn btn-warning" style="font-weight: bold">Sửa<i class="fa-solid fa-arrow-up-from-bracket"></i></a>
                                 <a href="{{ route('admin-tta.delete', ['id' => $item->ttaMaloai]) }}" 
                                     class="btn btn-danger" style="font-weight: bold"
                                     onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa  <i class="fa-solid fa-trash"></i></a>

@@ -4,6 +4,7 @@ use App\Http\Controllers\ttaSP;
 use App\Http\Controllers\TTa_SanPham_Controller;
 use App\Http\Controllers\tta_khachHang_controller;
 use App\Http\Controllers\tta_hoadon_controller;
+use App\Http\Controllers\tta_cthoadon_controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,10 +38,10 @@ Route::post('/ttaAdmins/tta-loai-san-pham/tta-create',[ttaSP::class,'ttacreatsub
 #chi tiết
 Route::get('/ttaAdmins/tta-loai-san-pham/tta-chitiet/{id}',[ttaSP::class,'ttachitiet'])->name('admin-tta.chitiet');
 #edit
-Route::get('/ttaAdmins/tta-loai-san-pham/tta-edit/{id}',[ttaSP::class,'ttaedit'])->name('admin-tta.edit');
-Route::post('/ttaAdmins/tta-loai-san-pham/tta-edit/{id}',[ttaSP::class,'ttaeditsubmit'])->name('admin-tta.editsubmit');
+Route::get('/ttaAdmins/tta-loai-san-pham/tta-editlsp/{id}',[ttaSP::class,'ttaedit'])->name('admin-tta.edit');
+Route::post('/ttaAdmins/tta-loai-san-pham/tta-editlsp/{id}',[ttaSP::class,'ttaeditsubmit'])->name('admin-tta.editsubmit');
 #xóa loại
-Route::get('/ttaAdmins/tta-loai-san-pham/tta-delete/{id}', [ttaSP::class, 'ttadelete'])->name('admin-tta.delete');
+Route::get('/ttaAdmins/tta-loai-san-pham/tta-deletelsp/{id}', [ttaSP::class, 'ttadelete'])->name('admin-tta.delete');
 #trangchủ
 Route::get('/ttaAdmins/tta-loai-san-pham/tta-trangchu', [ttaSP::class, 'ttatrangchu'])->name('admin-tta.loaisanpham.trangchu');
 #databoard
@@ -61,8 +62,16 @@ Route::get('/ttaAdmins/tta-loai-san-pham/tta-createQT',[TTa_QuanTri_controller::
 Route::post('/ttaAdmins/tta-loai-san-pham/tta-createQT',[TTa_QuanTri_controller::class,'ttacreatQTsubmit'])->name('admin-tta.createsubmitQT');
 #chi tiết
 Route::get('/ttaAdmins/tta-loai-san-pham/tta-chitietQTQT/{id}',[TTa_QuanTri_controller::class,'ttachitietqt'])->name('admin-tta.chitietqt');
+# sửa
+Route::get('/ttaAdmins/tta-loai-san-pham/tta-edit/{id}',[TTa_QuanTri_controller::class,'ttaeditqt'])->name('admin.editQT');
+# sửa submit
+Route::post('/ttaAdmins/tta-loai-san-pham/tta-edit/{id}',[TTa_QuanTri_controller::class,'ttaeditsubmit'])->name('admin.editsubmitQT');
+# delete
+Route::get('/ttaAdmins/tta-loai-san-pham/tta-delete/{id}',[TTa_QuanTri_controller::class,'ttaQTdelete'])->name('admin.deleteQT');
 #---------------------------------------------------------------------------------------------------------------------------------------------
 #Sản Phẩm
+#tim kiếm
+Route::get('/ttaAdminsp/tta-san-pham/timkiem', [TTa_SanPham_Controller::class, 'search'])->name('productTypes.timkiem');
 #List sản phẩm
 Route::get('/ttaAdminsp/tta-san-pham', [TTa_SanPham_Controller::class,'ttalistSP'])->name('ttalist.sanpham');
 #thêm mới sản phẩm
@@ -95,3 +104,32 @@ Route::get('/TTaAdmin_KH/ttaKhachHang/deletekhachhang/{id}',[tta_khachHang_contr
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 #Hóa Đơn 
 Route::get('/TTaAdmin_HD/ttaHoaDon',[tta_hoadon_controller::class,'ttalistHD'])->name('tta.listHD');
+#create 
+Route::get('/TTaAdmin_HD/ttaHoaDon/tta-craeteHD',[tta_hoadon_controller::class,'ttacreathd'])->name('tta.createHD');
+#create submit
+Route::post('/TTaAdmin_HD/ttaHoaDon/tta-craeteHD',[tta_hoadon_controller::class,'ttacreathdsubmit'])->name('tta.createsubmitHD');
+#chi tiết hóa đơn
+Route::get('/TTaAdmin_HD/ttaHoaDon/chitiet/{id}', [tta_hoadon_controller::class,'ttchitiethd'])->name('tta.chitietHD');
+#edit
+Route::get('/TTaAdmin_HD/ttaHoaDon/tta_editHD/{id}', [tta_hoadon_controller::class, 'ttaedithd'])
+    ->name('tta.editHD');
+#edit submit
+Route::post('/TTaAdmin_HD/ttaHoaDon/tta_editHD/{id}', [tta_hoadon_controller::class, 'ttaeditHDsubmit'])
+    ->name('tta.editHDsubmit');
+#delete hoa đơn
+Route::get('/TTaAdmin_HD/ttaHoaDon/tta-deleteHD/{id}',[tta_hoadon_controller::class,'ttaHDdelete'])->name('tta.deleteHd');
+#---------------------------------------------------------------------------------------------------------------------------------------------------------
+# líst
+Route::get('/TTaAdmin_CTHD/ttaCTHoaDon',[tta_cthoadon_controller::class,'ttalistCTHD'])->name('tta.listCTHD');
+# thêm mới
+Route::get('/TTaAdmin_CTHD/ttaCTHoaDon/Create-CTHD',[tta_cthoadon_controller::class,'ttacreatecthd'])->name('tta.createCTHD');
+# thêm mới submit
+Route::post('/TTaAdmin_CTHD/ttaCTHoaDon/Create-CTHD',[tta_cthoadon_controller::class,'ttacreatecthdsubmit'])->name('tta.createsubmitCTHD');
+# chi tiết
+Route::get('/TTaAdmin_CTHD/ttaCTHoaDon/ChiTiet-CTHD/{id}', [tta_cthoadon_controller::class, 'ttachitietcthd'])->name('tta.chitietCTHD');
+# edit
+Route::get('/TTaAdmin_CTHD/ttaCTHoaDon/Edit-CTHD/{id}', [tta_cthoadon_controller::class, 'ttaeditcthd'])->name('tta.editCTHD');
+# edit submit
+Route::post('/TTaAdmin_CTHD/ttaCTHoaDon/Edit-CTHD/{id}', [tta_cthoadon_controller::class, 'ttaeditCTHDsubmit'])->name('tta.editsubmitCTHD');
+# delete
+Route::get('/TTaAdmin_CTHD/ttaCTHoaDon/delete-CTHD/{id}', [tta_cthoadon_controller::class, 'ttaCTHDdelete'])->name('tta.deleteCTHD');

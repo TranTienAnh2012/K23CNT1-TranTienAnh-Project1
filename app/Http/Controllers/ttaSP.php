@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\TTA_loai_san_pham; 
 use App\Models\TTa_QuanTri; 
-
+use App\Models\TTa_SanPham_Model;
+use App\Models\tta_KhachHang_model;
+use App\Models\tta_hoadon_model;
 use Illuminate\Http\Request;
 
 class ttaSP extends Controller
@@ -86,9 +88,19 @@ class ttaSP extends Controller
         // Lấy tất cả loại sản phẩm từ bảng
         $ttaloaisanpham = TTA_loai_san_pham::all();
         $ttaquantri = TTa_QuanTri::all();
+        $ttasanpham = TTa_SanPham_Model::all();
+        $ttakhachhang = tta_KhachHang_model::all();
+        $ttaHoaDon = tta_hoadon_model::all();
         
         // Truyền dữ liệu vào view
-        return view('TTaAdmins.ttaLoaiSanPham.tta-trangchu', ['ttaloaisanpham' => $ttaloaisanpham, 'ttaquantri'=>$ttaquantri]);
+        return view('TTaAdmins.ttaLoaiSanPham.tta-trangchu',
+         [
+            'ttaloaisanpham' => $ttaloaisanpham, 
+            'ttaquantri'=>$ttaquantri,
+            'ttasanpham' => $ttasanpham, 
+            'ttakhachhang' => $ttakhachhang,
+            'ttaHoaDon' => $ttaHoaDon
+         ]);
     }
     # databoard liên kết tới trang chủ 
     public function datataboard(Request $request)
@@ -99,14 +111,26 @@ class ttaSP extends Controller
             
             // Lấy số lượng admin
             $ttaquantri = TTa_QuanTri::count();
+            // Lấy số lượng sản phẩm
+            $ttasanpham = TTa_SanPham_Model::count();
+            // Lấy số lượng khách hàng 
+            $ttakhachhang = tta_KhachHang_model::count();
+            // Lấy số lượng Hóa Đơn 
+            $ttaHoaDon = tta_hoadon_model::count();
     
             // Ghi log thông tin
             \Log::info("Số lượng loại sản phẩm: " . $ttaloaisanpham);
             \Log::info("Số lượng admin: " . $ttaquantri);
+            \Log::info("Số lượng sản phẩm: " . $ttasanpham);
+            \Log::info("Số lượng khách hàng: " . $ttakhachhang);
+            \Log::info("Số lượng Hóa Đơn: " . $ttaHoaDon);
             // Trả về view với dữ liệu
             return view('TTaAdmins.ttaLoaiSanPham.tta-trangchu', [
                 'ttaloaisanpham' => $ttaloaisanpham,
                 'ttaquantri' => $ttaquantri,
+                'ttasanpham' => $ttasanpham,
+                'ttakhachhang' => $ttakhachhang,
+                'ttaHoaDon' => $ttaHoaDon,
             ]);
         } else {
             // Nếu không có session admin thì redirect về trang login

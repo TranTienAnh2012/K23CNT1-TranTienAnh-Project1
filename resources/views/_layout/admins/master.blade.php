@@ -7,29 +7,32 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
-       body, html {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%; 
-    }
-    .sideBar {
-        width: 265px;
-        height: 100vh; /* Chiều cao toàn màn hình */
-        background: rgb(113, 112, 141);
-    }
-    .Wrapper {
-        flex-grow: 1; /* Chiếm toàn bộ không gian còn lại */
-        width: calc(100% - 265px); /* Đảm bảo chiều rộng là toàn bộ trừ sidebar */
-        height: 100vh; /* Chiều cao toàn màn hình */
-        background: #fff;
-        display: flex; /* Bố trí flexbox */
-        flex-direction: column; /* Sắp xếp dọc */
-    }
-    .content-body {
-        flex-grow: 1; /* Phần này chiếm toàn bộ khoảng trống */
-        overflow: auto; /* Kích hoạt thanh cuộn nếu nội dung quá lớn */
-    }
+   html, body, .container-fluid {
+    height: 100%; /* Đảm bảo chiều cao container chính */
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    display: flex; /* Dùng flex để liên kết .sideBar và .Wrapper */
+    overflow-x: auto; /* Thêm thanh cuộn ngang nếu nội dung quá dài */
+}
+
+.sideBar {
+    width: 265px; /* Cố định chiều rộng */
+    background: rgb(113, 112, 141);
+    flex-shrink: 0; /* Không co lại nếu nội dung lớn */
+}
+
+.Wrapper {
+    flex-grow: 1; /* Chiếm toàn bộ không gian còn lại */
+    background: #fff;
+    display: flex;
+    flex-direction: column; /* Bố cục dọc */
+    overflow: auto; /* Thanh cuộn khi nội dung dài */
+    overflow-x: auto; /* Thêm thanh cuộn ngang nếu nội dung quá dài */
+}
+
         
     </style>
 </head>

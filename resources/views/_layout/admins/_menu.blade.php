@@ -76,7 +76,10 @@
   </li>
 
   <li class="list-group-item">
-    <a href="/TTaAdmin_HD/ttaHoaDon"><i class="fa-solid fa-user"></i> Hóa Đơn</a>
+    <a href="/TTaAdmin_HD/ttaHoaDon"><i class="fa-solid fa-cart-shopping"></i></i> Hóa Đơn</a>
+  </li>
+  <li class="list-group-item">
+    <a href="/TTaAdmin_CTHD/ttaCTHoaDon"><i class="fa-solid fa-paperclip"></i>CT Hóa Đơn</a>
   </li>
 
 </ul>

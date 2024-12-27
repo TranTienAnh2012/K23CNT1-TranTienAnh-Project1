@@ -5,11 +5,20 @@
 </head>
 @section('content-body')
     <div class="container">
-        <div class="row ">
-            <div class="col-12" >
+        <div class="row">
+            <div class="col-12">
                 <h1>Danh Sách Sản Phẩm</h1> 
-                <a href="{{route('tta.createsp')}}" class="btn btn-success" style="margin-left: 85%;">Thêm Mới Sản Phẩm </a>
-            </div>
+                <!-- Sử dụng flexbox cho nút Thêm Mới và ô tìm kiếm -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="{{route('tta.createsp')}}" class="btn btn-success"><i class="fa-solid fa-arrow-right"></i>Thêm Mới Sản Phẩm</a>
+                    <form method="GET" action="{{ route('productTypes.timkiem') }}" class="d-flex mb-3">
+                        <input type="text" name="search" class="form-control" placeholder="Tìm kiếm..." value="{{ $search ?? '' }}">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search"></i> <!-- Icon tìm kiếm -->
+                        </button>
+                    </form>
+                </div>
+            </div> 
         </div>
         <div class="row">
             <table class="table table-bordered">
@@ -44,7 +53,6 @@
                             <td>{{ $item->ttaMaloai }}</td>
                             <td>{{ $item->ttaTrangThai == 1 ? 'Hiển thị' : 'Khóa' }}</td>
                             <td>
-                                <!-- Thay đổi 'ttaID' thành 'id' -->
                                 <a href="{{ route('tta.chitietsp', ['ttaID' => $item->id]) }}" class="btn btn-primary" style="font-weight: bold">
                                     Chi Tiết <i class="fa-solid fa-circle-info"></i>
                                 </a>
@@ -62,13 +70,11 @@
                         </tr>
                     @endforelse
                 </tbody>
-                
             </table>
-                   <!-- Liên kết phân trang -->
-                <div class="d-flex justify-content-center">
-                    {{ $ttasanpham->links() }}
-                </div>
-        
+            <!-- Liên kết phân trang -->
+            <div class="d-flex justify-content-center">
+                {{ $ttasanpham->links() }}
+            </div>
         </div>
     </div>
 @endsection
