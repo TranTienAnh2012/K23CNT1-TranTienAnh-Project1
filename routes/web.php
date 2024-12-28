@@ -133,3 +133,13 @@ Route::get('/TTaAdmin_CTHD/ttaCTHoaDon/Edit-CTHD/{id}', [tta_cthoadon_controller
 Route::post('/TTaAdmin_CTHD/ttaCTHoaDon/Edit-CTHD/{id}', [tta_cthoadon_controller::class, 'ttaeditCTHDsubmit'])->name('tta.editsubmitCTHD');
 # delete
 Route::get('/TTaAdmin_CTHD/ttaCTHoaDon/delete-CTHD/{id}', [tta_cthoadon_controller::class, 'ttaCTHDdelete'])->name('tta.deleteCTHD');
+#---------------------------------------------------------------------------------------------------------------------------------------------
+Route::get('/ttaweb/ThôngTinTT', function () {
+    return view('TTausers.ThôngTin.ttaGTSP');
+});
+Route::get('/ttaweb/GioiThieuTT', function () {
+    return view('TTausers.SanPham.ttaGTSPimages');
+});
+Route::get('/ttaweb', function () {
+    return view('_layouts.usres.tta_master');
+});

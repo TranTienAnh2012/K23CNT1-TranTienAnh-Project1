@@ -83,4 +83,9 @@
   </li>
 
 </ul>
-<a href="/">THoát</a>
+
+<ul class="list-group">
+  <li class="list-group-item">
+    <a href="/ttaweb/ThôngTinTT"><i class="fa-solid fa-paperclip"></i>Thoat</a>
+  </li>
+</ul>

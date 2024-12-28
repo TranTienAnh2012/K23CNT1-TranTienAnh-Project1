@@ -6,6 +6,7 @@ use App\Models\TTa_QuanTri;
 use App\Models\TTa_SanPham_Model;
 use App\Models\tta_KhachHang_model;
 use App\Models\tta_hoadon_model;
+use App\Models\tta_chitiehoadon;
 use Illuminate\Http\Request;
 
 class ttaSP extends Controller
@@ -91,6 +92,7 @@ class ttaSP extends Controller
         $ttasanpham = TTa_SanPham_Model::all();
         $ttakhachhang = tta_KhachHang_model::all();
         $ttaHoaDon = tta_hoadon_model::all();
+        $ttaCTHoaDon = tta_chitiehoadon::all();
         
         // Truyền dữ liệu vào view
         return view('TTaAdmins.ttaLoaiSanPham.tta-trangchu',
@@ -99,7 +101,8 @@ class ttaSP extends Controller
             'ttaquantri'=>$ttaquantri,
             'ttasanpham' => $ttasanpham, 
             'ttakhachhang' => $ttakhachhang,
-            'ttaHoaDon' => $ttaHoaDon
+            'ttaHoaDon' => $ttaHoaDon,
+            'ttaCTHoaDon' => $ttaCTHoaDon
          ]);
     }
     # databoard liên kết tới trang chủ 
@@ -108,7 +111,6 @@ class ttaSP extends Controller
         if ($request->session()->has('admin.id')) {
             // Lấy số lượng loại sản phẩm
             $ttaloaisanpham = TTA_loai_san_pham::count();
-            
             // Lấy số lượng admin
             $ttaquantri = TTa_QuanTri::count();
             // Lấy số lượng sản phẩm
@@ -117,6 +119,8 @@ class ttaSP extends Controller
             $ttakhachhang = tta_KhachHang_model::count();
             // Lấy số lượng Hóa Đơn 
             $ttaHoaDon = tta_hoadon_model::count();
+            // Lấy số lượng Chi Tiết Hóa Đơn 
+            $ttaCTHoaDon = tta_chitiehoadon::count();
     
             // Ghi log thông tin
             \Log::info("Số lượng loại sản phẩm: " . $ttaloaisanpham);
@@ -124,6 +128,7 @@ class ttaSP extends Controller
             \Log::info("Số lượng sản phẩm: " . $ttasanpham);
             \Log::info("Số lượng khách hàng: " . $ttakhachhang);
             \Log::info("Số lượng Hóa Đơn: " . $ttaHoaDon);
+            \Log::info("Số lượng Chi Tiết Hóa Đơn: " . $ttaCTHoaDon);
             // Trả về view với dữ liệu
             return view('TTaAdmins.ttaLoaiSanPham.tta-trangchu', [
                 'ttaloaisanpham' => $ttaloaisanpham,
@@ -131,6 +136,7 @@ class ttaSP extends Controller
                 'ttasanpham' => $ttasanpham,
                 'ttakhachhang' => $ttakhachhang,
                 'ttaHoaDon' => $ttaHoaDon,
+                'ttaCTHoaDon' => $ttaCTHoaDon,
             ]);
         } else {
             // Nếu không có session admin thì redirect về trang login

@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('ttaMatKhau',255);
             $table->tinyInteger('ttaTrangThai');
             $table->timestamps();
-        
-           
         });
     }
 

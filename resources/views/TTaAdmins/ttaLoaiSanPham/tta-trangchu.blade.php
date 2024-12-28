@@ -1,13 +1,16 @@
 @extends('_layout.admins.master')
 
-@section('title','Hình Ảnh')
+@section('title','Database')
 <head>
-    <style>
-        .container{
-            display: flex;
-        }
-      
-    </style>
+<style>
+    .container{
+        display: flex;
+    }
+    .container_2{
+        display: flex;
+    }
+    
+</style>
 </head>
 @section('content-body')
             <div class="row">
@@ -90,7 +93,7 @@
         </div>
     </div>
         <br>
-            <div class="container2">
+            <div class="container_2">
                 <div  class="col-md-3" style="padding-left: 20px" >
                     <div class="card">
                         <div class="card-body">
@@ -106,6 +109,24 @@
                         
                         <div class="card-footer">
                             <a href="{{ route('tta.listHD') }}" class="btn btn-success">Quản Lý Hóa Đơn</a>
+                        </div>
+                    </div>
+                </div>
+                <div  class="col-md-3" style="padding-left: 20px;"  >
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">Tổng Số Chi Tiết Hóa Đơn</h5>
+                            
+                        @if($ttaCTHoaDon)
+                            <p class="card-text">Số lượng Chi Tiết Hóa Đơn: {{ $ttaCTHoaDon->count() }}</p>
+                        @else
+                            <p class="card-text">Không có Chí Tiết Hóa Đơn trong hệ thống.</p>
+                        @endif
+                        
+                        </div>
+                        
+                        <div class="card-footer">
+                            <a href="{{ route('tta.listHD') }}" class="btn btn-success">Quản Lý Chi Tiết Hóa Đơn</a>
                         </div>
                     </div>
                 </div>
